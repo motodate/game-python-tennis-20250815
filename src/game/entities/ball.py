@@ -1,4 +1,6 @@
 import pygame
+import random
+import math
 from src.utils.settings import GameSettings
 
 
@@ -15,3 +17,17 @@ class Ball:
         self.x = x
         self.y = y
         self.size = GameSettings.BALL_SIZE
+        self.vx = 0
+        self.vy = 0
+
+    def reset(self):
+        """ボールを初期状態にリセットする"""
+        # 画面中央に配置
+        self.x = (GameSettings.WINDOW_WIDTH - self.size) // 2
+        self.y = (GameSettings.WINDOW_HEIGHT - self.size) // 2
+        
+        # ランダムな方向への速度分配
+        angle = random.uniform(0, 2 * math.pi)
+        speed = GameSettings.BALL_INITIAL_SPEED
+        self.vx = speed * math.cos(angle)
+        self.vy = speed * math.sin(angle)
