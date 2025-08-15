@@ -20,7 +20,7 @@ class TennisGame:
         if self.headless:
             print("ヘッドレスモードで実行中...")
             return
-        
+
         try:
             self.game_loop.running = True
             while self.game_loop.running:
@@ -37,12 +37,12 @@ class TennisGame:
 def main():
     """メイン関数"""
     # pytestの検出またはコマンドライン引数でheadlessモードを判定
-    headless = '--headless' in sys.argv or 'pytest' in sys.modules
-    
+    headless = "--headless" in sys.argv or "pytest" in sys.modules
+
     print("テニスゲームを開始します...")
     if headless:
         print("ヘッドレスモードが有効です")
-    
+
     game = TennisGame(headless=headless)
     game.run()
 

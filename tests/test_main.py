@@ -15,7 +15,7 @@ def test_main_py_is_executable():
         [sys.executable, "main.py", "--headless"],
         capture_output=True,
         text=True,
-        timeout=5
+        timeout=5,
     )
     # main.pyが存在し、構文エラーがないことを確認
     # ヘッドレスモードでは即座に終了する
@@ -28,4 +28,6 @@ def test_main_py_has_main_block():
     """main.pyにif __name__ == "__main__":ブロックが存在することを確認"""
     with open("main.py", "r", encoding="utf-8") as f:
         content = f.read()
-    assert 'if __name__ == "__main__":' in content, "main.pyにif __name__ == '__main__':ブロックが存在しません"
+    assert (
+        'if __name__ == "__main__":' in content
+    ), "main.pyにif __name__ == '__main__':ブロックが存在しません"
