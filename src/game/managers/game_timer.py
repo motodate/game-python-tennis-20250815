@@ -7,3 +7,14 @@ class GameTimer:
     def update(self, delta_time):
         self.remaining_time -= delta_time
         self.remaining_time = max(0, self.remaining_time)
+
+    def is_expired(self):
+        return self.remaining_time <= 0
+
+    def get_remaining_time(self):
+        return self.remaining_time
+
+    def get_formatted_time(self):
+        minutes = int(self.remaining_time // 60)
+        seconds = int(self.remaining_time % 60)
+        return f"{minutes}:{seconds:02d}"
