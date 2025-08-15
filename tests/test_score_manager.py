@@ -56,3 +56,13 @@ class TestScoreManager:
         player_score, cpu_score = score_manager.get_scores()
         assert player_score == 2
         assert cpu_score == 1
+
+    def test_reset(self):
+        """reset()メソッドのテスト"""
+        score_manager = ScoreManager()
+        score_manager.add_player_point()
+        score_manager.add_player_point()
+        score_manager.add_cpu_point()
+        score_manager.reset()
+        assert score_manager.player_score == 0
+        assert score_manager.cpu_score == 0
