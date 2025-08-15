@@ -25,7 +25,7 @@ class Ball:
         # 画面中央に配置
         self.x = (GameSettings.WINDOW_WIDTH - self.size) // 2
         self.y = (GameSettings.WINDOW_HEIGHT - self.size) // 2
-        
+
         # ランダムな方向への速度分配
         angle = random.uniform(0, 2 * math.pi)
         speed = GameSettings.BALL_INITIAL_SPEED
@@ -64,11 +64,11 @@ class Ball:
         acceleration_rate = GameSettings.BALL_ACCELERATION_RATE
         self.vx *= acceleration_rate
         self.vy *= acceleration_rate
-        
+
         # 最大速度チェック
         current_speed = self.get_speed()
         max_speed = GameSettings.BALL_MAX_SPEED
-        
+
         if current_speed > max_speed:
             # 速度を最大速度に制限（方向は維持）
             ratio = max_speed / current_speed
