@@ -74,3 +74,16 @@ class Ball:
             ratio = max_speed / current_speed
             self.vx *= ratio
             self.vy *= ratio
+
+    def draw(self, screen):
+        """ボールを画面に描画する
+
+        Args:
+            screen: pygame.Surfaceオブジェクト
+
+        Returns:
+            pygame.Rect: 描画されたボールの矩形
+        """
+        rect = pygame.Rect(self.x, self.y, self.size, self.size)
+        pygame.draw.rect(screen, GameSettings.WHITE, rect)
+        return rect
