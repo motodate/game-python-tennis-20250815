@@ -90,3 +90,39 @@ class TestBall:
         # delta_timeが2倍になると移動距離も2倍になることを確認
         assert abs(ball2.x - (ball1.x * 2)) < 0.001
         assert abs(ball2.y - (ball1.y * 2)) < 0.001
+
+    def test_get_speed_method(self):
+        """get_speed()メソッドのテスト"""
+        ball = Ball(0, 0)
+        ball.vx = 300
+        ball.vy = 400
+        
+        # 速度の大きさ計算（√(300² + 400²) = 500）
+        expected_speed = math.sqrt(300**2 + 400**2)
+        actual_speed = ball.get_speed()
+        assert abs(actual_speed - expected_speed) < 0.001
+
+    def test_set_velocity_method(self):
+        """set_velocity()メソッドのテスト"""
+        ball = Ball(0, 0)
+        ball.set_velocity(150, 200)
+        
+        assert ball.vx == 150
+        assert ball.vy == 200
+
+    def test_speed_magnitude_calculation(self):
+        """速度の大きさ計算のテスト"""
+        ball = Ball(0, 0)
+        
+        # 様々な速度で計算テスト
+        test_cases = [
+            (100, 0, 100),      # 水平移動
+            (0, 100, 100),      # 垂直移動
+            (3, 4, 5),          # 3-4-5三角形
+            (-300, 400, 500),   # 負の値を含む
+        ]
+        
+        for vx, vy, expected_speed in test_cases:
+            ball.set_velocity(vx, vy)
+            actual_speed = ball.get_speed()
+            assert abs(actual_speed - expected_speed) < 0.001
