@@ -58,3 +58,9 @@ class Ball:
         """
         self.vx = vx
         self.vy = vy
+
+    def accelerate(self):
+        """ボールを加速する（5%速度増加）"""
+        acceleration_rate = GameSettings.BALL_ACCELERATION_RATE
+        self.vx *= acceleration_rate
+        self.vy *= acceleration_rate
