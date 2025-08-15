@@ -17,3 +17,7 @@ class ScoreManager:
 
     def get_scores(self):
         return (self.player_score, self.cpu_score)
+
+    def reset(self):
+        self.player_score = 0
+        self.cpu_score = 0
