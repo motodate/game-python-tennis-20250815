@@ -45,3 +45,36 @@ class TestGameState:
         # GAME_OVER -> WAITING
         game_state.set_state(State.WAITING)
         assert game_state.get_state() == State.WAITING
+
+    def test_is_waiting_method(self):
+        """is_waiting()メソッドのテスト"""
+        game_state = GameState()
+        
+        # 初期状態はWAITING
+        assert game_state.is_waiting() is True
+        
+        # PLAYINGに変更
+        game_state.set_state(State.PLAYING)
+        assert game_state.is_waiting() is False
+
+    def test_is_playing_method(self):
+        """is_playing()メソッドのテスト"""
+        game_state = GameState()
+        
+        # 初期状態はWAITING
+        assert game_state.is_playing() is False
+        
+        # PLAYINGに変更
+        game_state.set_state(State.PLAYING)
+        assert game_state.is_playing() is True
+
+    def test_is_game_over_method(self):
+        """is_game_over()メソッドのテスト"""
+        game_state = GameState()
+        
+        # 初期状態はWAITING
+        assert game_state.is_game_over() is False
+        
+        # GAME_OVERに変更
+        game_state.set_state(State.GAME_OVER)
+        assert game_state.is_game_over() is True

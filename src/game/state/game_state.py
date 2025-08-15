@@ -30,3 +30,27 @@ class GameState:
             State: 現在の状態
         """
         return self.current_state
+
+    def is_waiting(self):
+        """待機状態かどうかを判定する
+
+        Returns:
+            bool: 待機状態の場合True、そうでなければFalse
+        """
+        return self.current_state == State.WAITING
+
+    def is_playing(self):
+        """プレイ中状態かどうかを判定する
+
+        Returns:
+            bool: プレイ中状態の場合True、そうでなければFalse
+        """
+        return self.current_state == State.PLAYING
+
+    def is_game_over(self):
+        """ゲームオーバー状態かどうかを判定する
+
+        Returns:
+            bool: ゲームオーバー状態の場合True、そうでなければFalse
+        """
+        return self.current_state == State.GAME_OVER
