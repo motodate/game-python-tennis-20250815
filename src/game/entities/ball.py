@@ -64,3 +64,13 @@ class Ball:
         acceleration_rate = GameSettings.BALL_ACCELERATION_RATE
         self.vx *= acceleration_rate
         self.vy *= acceleration_rate
+        
+        # 最大速度チェック
+        current_speed = self.get_speed()
+        max_speed = GameSettings.BALL_MAX_SPEED
+        
+        if current_speed > max_speed:
+            # 速度を最大速度に制限（方向は維持）
+            ratio = max_speed / current_speed
+            self.vx *= ratio
+            self.vy *= ratio

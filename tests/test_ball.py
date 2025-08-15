@@ -174,8 +174,8 @@ class TestBall:
         
         ball.accelerate()
         
-        # 最大速度を超えないことを確認
-        assert ball.get_speed() <= GameSettings.BALL_MAX_SPEED
+        # 最大速度を超えないことを確認（浮動小数点の精度を考慮）
+        assert ball.get_speed() <= GameSettings.BALL_MAX_SPEED + 0.001
 
     def test_max_speed_clamp(self):
         """最大速度時の速度制限テスト"""
