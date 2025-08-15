@@ -3,6 +3,7 @@ class GameTimer:
 
     def __init__(self):
         self.remaining_time = self.GAME_DURATION
+        self.is_running = False
 
     def update(self, delta_time):
         self.remaining_time -= delta_time
@@ -18,3 +19,12 @@ class GameTimer:
         minutes = int(self.remaining_time // 60)
         seconds = int(self.remaining_time % 60)
         return f"{minutes}:{seconds:02d}"
+
+    def reset(self):
+        self.remaining_time = self.GAME_DURATION
+
+    def start(self):
+        self.is_running = True
+
+    def stop(self):
+        self.is_running = False
