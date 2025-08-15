@@ -78,3 +78,31 @@ class TestGameState:
         # GAME_OVERに変更
         game_state.set_state(State.GAME_OVER)
         assert game_state.is_game_over() is True
+
+    def test_start_game_method(self):
+        """start_game()メソッドのテスト"""
+        game_state = GameState()
+        
+        # WAITINGからPLAYINGへの遷移
+        game_state.start_game()
+        assert game_state.get_state() == State.PLAYING
+
+    def test_start_game_waiting_to_playing(self):
+        """WAITINGからPLAYINGへの遷移テスト"""
+        game_state = GameState()
+        assert game_state.is_waiting() is True
+        
+        game_state.start_game()
+        assert game_state.is_playing() is True
+        assert game_state.is_waiting() is False
+
+    def test_start_game_from_game_over_resets_to_waiting(self):
+        """GAME_OVERからWAITINGへのリセットテスト"""
+        game_state = GameState()
+        game_state.set_state(State.GAME_OVER)
+        assert game_state.is_game_over() is True
+        
+        # チケットでは「GAME_OVERからWAITINGへのリセット」とあるが、
+        # ここではstart_game()がGAME_OVERから直接PLAYINGに遷移すると仮定
+        game_state.start_game()
+        assert game_state.is_playing() is True

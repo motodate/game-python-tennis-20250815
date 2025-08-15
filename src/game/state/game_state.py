@@ -54,3 +54,10 @@ class GameState:
             bool: ゲームオーバー状態の場合True、そうでなければFalse
         """
         return self.current_state == State.GAME_OVER
+
+    def start_game(self):
+        """ゲームを開始する
+
+        状態をPLAYINGに変更し、ゲーム開始時の初期化を行う
+        """
+        self.current_state = State.PLAYING
