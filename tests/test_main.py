@@ -10,16 +10,18 @@ def test_main_py_exists():
 
 
 def test_main_py_is_executable():
-    """main.pyが実行可能であることを確認"""
+    """main.pyがヘッドレスモードで実行可能であることを確認"""
     result = subprocess.run(
-        [sys.executable, "main.py"],
+        [sys.executable, "main.py", "--headless"],
         capture_output=True,
         text=True,
         timeout=5
     )
     # main.pyが存在し、構文エラーがないことを確認
-    # 実際の動作内容は後で実装するので、ここでは基本的な実行確認のみ
+    # ヘッドレスモードでは即座に終了する
     assert result.returncode == 0, f"main.pyの実行に失敗しました: {result.stderr}"
+    assert "テニスゲームを開始します..." in result.stdout
+    assert "ヘッドレスモードが有効です" in result.stdout
 
 
 def test_main_py_has_main_block():
