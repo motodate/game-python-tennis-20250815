@@ -16,3 +16,25 @@ class Paddle:
         self.y = y
         self.width = GameSettings.PADDLE_WIDTH
         self.height = GameSettings.PADDLE_HEIGHT
+    
+    @classmethod
+    def create_left_paddle(cls):
+        """左パドルを作成する
+        
+        Returns:
+            Paddle: 左端に配置されたパドル
+        """
+        x = GameSettings.PADDLE_LEFT_X
+        y = (GameSettings.WINDOW_HEIGHT - GameSettings.PADDLE_HEIGHT) // 2
+        return cls(x, y)
+    
+    @classmethod
+    def create_right_paddle(cls):
+        """右パドルを作成する
+        
+        Returns:
+            Paddle: 右端に配置されたパドル
+        """
+        x = GameSettings.PADDLE_RIGHT_X
+        y = (GameSettings.WINDOW_HEIGHT - GameSettings.PADDLE_HEIGHT) // 2
+        return cls(x, y)
