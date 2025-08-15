@@ -65,3 +65,49 @@ class TestPaddle:
         # 色定数が正しく定義されていることを確認
         assert hasattr(GameSettings, 'WHITE')
         assert GameSettings.WHITE == (255, 255, 255)
+    
+    def test_move_up(self):
+        """move_up()メソッドのテスト"""
+        paddle = Paddle(100, 200)
+        initial_y = paddle.y
+        
+        # 上に移動
+        speed = 300  # pixel/second
+        delta_time = 0.1  # 0.1秒
+        paddle.move_up(speed, delta_time)
+        
+        # Y座標が上に移動していることを確認
+        expected_y = initial_y - (speed * delta_time)
+        assert paddle.y == expected_y
+    
+    def test_move_down(self):
+        """move_down()メソッドのテスト"""
+        paddle = Paddle(100, 200)
+        initial_y = paddle.y
+        
+        # 下に移動
+        speed = 300  # pixel/second
+        delta_time = 0.1  # 0.1秒
+        paddle.move_down(speed, delta_time)
+        
+        # Y座標が下に移動していることを確認
+        expected_y = initial_y + (speed * delta_time)
+        assert paddle.y == expected_y
+    
+    def test_movement_with_delta_time(self):
+        """移動速度がdelta_timeに比例することをテスト"""
+        paddle = Paddle(100, 200)
+        initial_y = paddle.y
+        
+        speed = 500  # pixel/second
+        
+        # 異なるdelta_timeでテスト
+        paddle.move_up(speed, 0.02)  # 0.02秒
+        first_movement = initial_y - paddle.y
+        
+        paddle.y = initial_y  # リセット
+        paddle.move_up(speed, 0.04)  # 0.04秒
+        second_movement = initial_y - paddle.y
+        
+        # delta_timeが2倍になると移動距離も2倍になることを確認
+        assert abs(second_movement - (first_movement * 2)) < 0.001
