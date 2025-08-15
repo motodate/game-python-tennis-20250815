@@ -13,3 +13,9 @@ class GameSettings:
     PADDLE_HEIGHT = 100
     PADDLE_LEFT_X = 50
     PADDLE_RIGHT_X = 735
+
+    # Ball settings
+    BALL_SIZE = 15
+    BALL_INITIAL_SPEED = 300
+    BALL_MAX_SPEED = 700
+    BALL_ACCELERATION_RATE = 1.05
