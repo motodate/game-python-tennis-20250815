@@ -1,4 +1,3 @@
-import pytest
 from src.game.managers.score_manager import ScoreManager
 
 

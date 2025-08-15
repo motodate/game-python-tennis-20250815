@@ -1,4 +1,3 @@
-import pytest
 from src.game.managers.game_timer import GameTimer
 
 
