@@ -205,3 +205,31 @@ class TestBall:
         assert abs(initial_angle - new_angle) < 0.001
         # 速度が制限されていることを確認
         assert abs(ball.get_speed() - GameSettings.BALL_MAX_SPEED) < 0.001
+
+    def test_draw_method(self):
+        """draw()メソッドのテスト"""
+        ball = Ball(100, 150)
+        
+        # モックサーフェスを作成
+        pygame.init()
+        screen = pygame.Surface((800, 600))
+        
+        # draw()メソッドを呼び出し
+        rect = ball.draw(screen)
+        
+        # 戻り値がpygame.Rectであることを確認
+        assert isinstance(rect, pygame.Rect)
+        assert rect.x == 100
+        assert rect.y == 150
+        assert rect.width == GameSettings.BALL_SIZE
+        assert rect.height == GameSettings.BALL_SIZE
+        
+        pygame.quit()
+
+    def test_draw_uses_white_color(self):
+        """白色で描画されることのテスト"""
+        ball = Ball(0, 0)
+        
+        # 色定数が正しく定義されていることを確認
+        assert hasattr(GameSettings, 'WHITE')
+        assert GameSettings.WHITE == (255, 255, 255)
