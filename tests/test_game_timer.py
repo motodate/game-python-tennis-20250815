@@ -61,3 +61,28 @@ class TestGameTimer:
         game_timer = GameTimer()
         game_timer.update(5.0)  # 55秒残る
         assert game_timer.get_formatted_time() == "0:55"
+
+    def test_reset(self):
+        """reset()メソッドのテスト"""
+        game_timer = GameTimer()
+        game_timer.update(30.0)  # 30秒経過
+        game_timer.reset()
+        assert game_timer.remaining_time == 60
+
+    def test_start_sets_running_true(self):
+        """start()メソッドのテスト"""
+        game_timer = GameTimer()
+        game_timer.start()
+        assert game_timer.is_running is True
+
+    def test_stop_sets_running_false(self):
+        """stop()メソッドのテスト"""
+        game_timer = GameTimer()
+        game_timer.start()
+        game_timer.stop()
+        assert game_timer.is_running is False
+
+    def test_initial_running_state(self):
+        """初期状態でis_runningがFalseであることをテスト"""
+        game_timer = GameTimer()
+        assert game_timer.is_running is False
