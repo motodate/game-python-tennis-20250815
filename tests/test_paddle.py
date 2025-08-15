@@ -111,3 +111,43 @@ class TestPaddle:
         
         # delta_timeが2倍になると移動距離も2倍になることを確認
         assert abs(second_movement - (first_movement * 2)) < 0.001
+    
+    def test_move_up_boundary_limit(self):
+        """上端での移動制限テスト"""
+        # 上端近くに配置
+        paddle = Paddle(100, 5)
+        
+        # 大きく上に移動しようとする
+        speed = 1000
+        delta_time = 1.0
+        paddle.move_up(speed, delta_time)
+        
+        # Y座標が0以下にならないことを確認
+        assert paddle.y >= 0
+    
+    def test_move_down_boundary_limit(self):
+        """下端での移動制限テスト"""
+        # 下端近くに配置
+        max_y = GameSettings.WINDOW_HEIGHT - GameSettings.PADDLE_HEIGHT
+        paddle = Paddle(100, max_y - 5)
+        
+        # 大きく下に移動しようとする
+        speed = 1000
+        delta_time = 1.0
+        paddle.move_down(speed, delta_time)
+        
+        # Y座標が画面下端を超えないことを確認
+        assert paddle.y <= max_y
+    
+    def test_boundary_clamp_at_exact_limits(self):
+        """境界でのclamp処理テスト"""
+        # 上端テスト
+        paddle = Paddle(100, 0)
+        paddle.move_up(100, 0.1)
+        assert paddle.y == 0
+        
+        # 下端テスト
+        max_y = GameSettings.WINDOW_HEIGHT - GameSettings.PADDLE_HEIGHT
+        paddle = Paddle(100, max_y)
+        paddle.move_down(100, 0.1)
+        assert paddle.y == max_y
