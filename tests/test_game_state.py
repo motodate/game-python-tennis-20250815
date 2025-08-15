@@ -14,3 +14,34 @@ class TestGameState:
         """初期状態がWAITINGであることをテスト"""
         game_state = GameState()
         assert game_state.get_state() == State.WAITING
+
+    def test_set_state_method(self):
+        """set_state()メソッドのテスト"""
+        game_state = GameState()
+        game_state.set_state(State.PLAYING)
+        assert game_state.get_state() == State.PLAYING
+
+    def test_get_state_method(self):
+        """get_state()メソッドのテスト"""
+        game_state = GameState()
+        # 初期状態の確認
+        assert game_state.get_state() == State.WAITING
+        # 状態変更後の確認
+        game_state.set_state(State.GAME_OVER)
+        assert game_state.get_state() == State.GAME_OVER
+
+    def test_state_change_reflects_correctly(self):
+        """状態変更が正しく反映されることのテスト"""
+        game_state = GameState()
+        
+        # WAITING -> PLAYING
+        game_state.set_state(State.PLAYING)
+        assert game_state.get_state() == State.PLAYING
+        
+        # PLAYING -> GAME_OVER
+        game_state.set_state(State.GAME_OVER)
+        assert game_state.get_state() == State.GAME_OVER
+        
+        # GAME_OVER -> WAITING
+        game_state.set_state(State.WAITING)
+        assert game_state.get_state() == State.WAITING
