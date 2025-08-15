@@ -27,3 +27,18 @@ class CollisionHandler:
             return True
         
         return False
+
+    def handle_wall_bounce(self, ball):
+        """壁での反射処理を行う
+
+        Args:
+            ball: Ballオブジェクト
+        """
+        # Y方向の速度を反転
+        ball.vy = -ball.vy
+        
+        # 壁にめり込まないよう位置補正
+        if ball.y <= 0:
+            ball.y = 0
+        elif ball.y + ball.size >= GameSettings.WINDOW_HEIGHT:
+            ball.y = GameSettings.WINDOW_HEIGHT - ball.size
