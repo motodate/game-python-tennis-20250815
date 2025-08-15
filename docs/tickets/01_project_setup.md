@@ -12,51 +12,51 @@ Pythonテニスゲームプロジェクトの基盤を構築する。ディレ�
 ## ToDo（TDD実装順）
 
 ### 1. プロジェクト構造のテストを作成
-- [ ] tests/test_project_structure.pyを作成
-- [ ] ディレクトリ構造の存在を確認するテストを記述
-- [ ] テストを実行して失敗することを確認
+- [x] tests/test_project_structure.pyを作成
+- [x] ディレクトリ構造の存在を確認するテストを記述
+- [x] テストを実行して失敗することを確認
 
 ### 2. プロジェクト構造を実装
-- [ ] src/ディレクトリを作成
-- [ ] src/game/ディレクトリを作成
-- [ ] src/ui/ディレクトリを作成
-- [ ] src/utils/ディレクトリを作成
-- [ ] tests/ディレクトリを作成
-- [ ] 各ディレクトリに__init__.pyを追加
-- [ ] テストを実行して成功することを確認
+- [x] src/ディレクトリを作成
+- [x] src/game/ディレクトリを作成
+- [x] src/ui/ディレクトリを作成
+- [x] src/utils/ディレクトリを作成
+- [x] tests/ディレクトリを作成
+- [x] 各ディレクトリに__init__.pyを追加
+- [x] テストを実行して成功することを確認
 
 ### 3. 依存関係のテストを作成
-- [ ] tests/test_dependencies.pyを作成
-- [ ] pygameのインポート可能性をテスト
-- [ ] テストを実行して失敗することを確認
+- [x] tests/test_dependencies.pyを作成
+- [x] pygameのインポート可能性をテスト
+- [x] テストを実行して失敗することを確認
 
 ### 4. 依存関係を定義
-- [ ] requirements.txtを作成
-- [ ] pygame==2.5.2を追加
-- [ ] pytest==7.4.3を追加
-- [ ] black==23.12.1を追加
-- [ ] flake8==7.0.0を追加
-- [ ] pip install -r requirements.txtを実行
-- [ ] テストを実行して成功することを確認
+- [x] requirements.txtを作成（pipenvのため不要）
+- [x] pygame==2.5.2を追加（pipenvで最新版をインストール済み）
+- [x] pytest==7.4.3を追加（pipenvで最新版をインストール済み）
+- [x] black==23.12.1を追加（pipenvで最新版をインストール済み）
+- [x] flake8==7.0.0を追加（pipenvで最新版をインストール済み）
+- [x] pip install -r requirements.txtを実行（pipenv installで代替）
+- [x] テストを実行して成功することを確認
 
 ### 5. エントリーポイントのテストを作成
-- [ ] tests/test_main.pyを作成
-- [ ] main.pyの存在と実行可能性をテスト
-- [ ] テストを実行して失敗することを確認
+- [x] tests/test_main.pyを作成
+- [x] main.pyの存在と実行可能性をテスト
+- [x] テストを実行して失敗することを確認
 
 ### 6. エントリーポイントを実装
-- [ ] main.pyを作成
-- [ ] 基本的な起動メッセージを実装
-- [ ] if __name__ == "__main__":ブロックを追加
-- [ ] テストを実行して成功することを確認
+- [x] main.pyを作成
+- [x] 基本的な起動メッセージを実装
+- [x] if __name__ == "__main__":ブロックを追加
+- [x] テストを実行して成功することを確認
 
 ### 7. 開発環境設定
-- [ ] .gitignoreを作成（__pycache__、venv、.pytest_cache等を追加）
-- [ ] setup.cfgを作成（flake8、blackの設定）
-- [ ] 全体のテストを実行して成功することを確認
+- [x] .gitignoreを作成（__pycache__、venv、.pytest_cache等を追加）
+- [x] setup.cfgを作成（flake8、blackの設定）
+- [x] 全体のテストを実行して成功することを確認
 
 ## 完了条件
-- [ ] プロジェクトの基本構造が構築されている
-- [ ] 全ての依存関係がインストール可能
-- [ ] pytest testsが実行でき、全テストがパスする
-- [ ] main.pyが実行可能
+- [x] プロジェクトの基本構造が構築されている
+- [x] 全ての依存関係がインストール可能
+- [x] pytest testsが実行でき、全テストがパスする
+- [x] main.pyが実行可能
