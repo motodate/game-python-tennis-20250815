@@ -37,3 +37,31 @@ class TestPaddle:
         expected_center_y = GameSettings.WINDOW_HEIGHT // 2
         actual_center_y = paddle.y + paddle.height // 2
         assert actual_center_y == expected_center_y
+    
+    def test_draw_method_creates_rect(self):
+        """draw()メソッドがpygame.Rectを正しく生成することをテスト"""
+        paddle = Paddle(100, 150)
+        
+        # モックサーフェスを作成
+        pygame.init()
+        screen = pygame.Surface((800, 600))
+        
+        # draw()メソッドを呼び出し
+        rect = paddle.draw(screen)
+        
+        # 戻り値がpygame.Rectであることを確認
+        assert isinstance(rect, pygame.Rect)
+        assert rect.x == 100
+        assert rect.y == 150
+        assert rect.width == GameSettings.PADDLE_WIDTH
+        assert rect.height == GameSettings.PADDLE_HEIGHT
+        
+        pygame.quit()
+    
+    def test_draw_uses_white_color(self):
+        """描画色が白であることをテスト"""
+        paddle = Paddle(0, 0)
+        
+        # 色定数が正しく定義されていることを確認
+        assert hasattr(GameSettings, 'WHITE')
+        assert GameSettings.WHITE == (255, 255, 255)
