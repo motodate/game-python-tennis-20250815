@@ -75,6 +75,14 @@ class Ball:
             self.vx *= ratio
             self.vy *= ratio
 
+    def get_rect(self):
+        """衝突判定用のpygame.Rectを取得する
+
+        Returns:
+            pygame.Rect: ボールの矩形
+        """
+        return pygame.Rect(self.x, self.y, self.size, self.size)
+
     def draw(self, screen):
         """ボールを画面に描画する
 
