@@ -51,3 +51,42 @@ class TestBall:
         
         # どちらかは0でないことを確認（動いている）
         assert ball.vx != 0 or ball.vy != 0
+
+    def test_ball_update_method(self):
+        """update()メソッドのテスト"""
+        ball = Ball(100, 100)
+        ball.vx = 200  # 200 pixel/second
+        ball.vy = 150  # 150 pixel/second
+        
+        initial_x = ball.x
+        initial_y = ball.y
+        
+        delta_time = 0.1  # 0.1秒
+        ball.update(delta_time)
+        
+        # 位置が期待通りに更新されることを確認
+        expected_x = initial_x + (ball.vx * delta_time)
+        expected_y = initial_y + (ball.vy * delta_time)
+        assert ball.x == expected_x
+        assert ball.y == expected_y
+
+    def test_ball_delta_time_position_update(self):
+        """delta_timeに応じた位置更新のテスト"""
+        ball = Ball(0, 0)
+        ball.vx = 300
+        ball.vy = 400
+        
+        # 異なるdelta_timeでテスト
+        ball1 = Ball(0, 0)
+        ball1.vx = 300
+        ball1.vy = 400
+        ball1.update(0.05)  # 0.05秒
+        
+        ball2 = Ball(0, 0)
+        ball2.vx = 300
+        ball2.vy = 400
+        ball2.update(0.1)   # 0.1秒
+        
+        # delta_timeが2倍になると移動距離も2倍になることを確認
+        assert abs(ball2.x - (ball1.x * 2)) < 0.001
+        assert abs(ball2.y - (ball1.y * 2)) < 0.001
