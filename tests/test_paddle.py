@@ -151,3 +151,41 @@ class TestPaddle:
         paddle = Paddle(100, max_y)
         paddle.move_down(100, 0.1)
         assert paddle.y == max_y
+    
+    def test_get_rect_method(self):
+        """get_rect()メソッドのテスト"""
+        paddle = Paddle(150, 250)
+        rect = paddle.get_rect()
+        
+        # pygame.Rectが正しく生成されることを確認
+        assert isinstance(rect, pygame.Rect)
+        assert rect.x == 150
+        assert rect.y == 250
+        assert rect.width == GameSettings.PADDLE_WIDTH
+        assert rect.height == GameSettings.PADDLE_HEIGHT
+    
+    def test_get_center_y_method(self):
+        """get_center_y()メソッドのテスト"""
+        paddle = Paddle(100, 200)
+        center_y = paddle.get_center_y()
+        
+        # 中央Y座標が正しく計算されることを確認
+        expected_center_y = paddle.y + paddle.height // 2
+        assert center_y == expected_center_y
+        
+        # 具体的な値でも確認
+        assert center_y == 200 + GameSettings.PADDLE_HEIGHT // 2
+    
+    def test_collision_detection_methods_integration(self):
+        """衝突判定用メソッドの統合テスト"""
+        # 左パドルを作成
+        left_paddle = Paddle.create_left_paddle()
+        
+        # get_rect()が正しい位置を返すことを確認
+        rect = left_paddle.get_rect()
+        assert rect.x == GameSettings.PADDLE_LEFT_X
+        
+        # get_center_y()が画面中央を返すことを確認
+        center_y = left_paddle.get_center_y()
+        expected_center = GameSettings.WINDOW_HEIGHT // 2
+        assert center_y == expected_center
