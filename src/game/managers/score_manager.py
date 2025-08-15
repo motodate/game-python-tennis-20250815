@@ -8,3 +8,12 @@ class ScoreManager:
 
     def add_cpu_point(self):
         self.cpu_score += 1
+
+    def get_player_score(self):
+        return self.player_score
+
+    def get_cpu_score(self):
+        return self.cpu_score
+
+    def get_scores(self):
+        return (self.player_score, self.cpu_score)
