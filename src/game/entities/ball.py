@@ -40,3 +40,21 @@ class Ball:
         """
         self.x += self.vx * delta_time
         self.y += self.vy * delta_time
+
+    def get_speed(self):
+        """現在の速度の大きさを取得する
+
+        Returns:
+            float: 速度の大きさ (√(vx²+vy²))
+        """
+        return math.sqrt(self.vx**2 + self.vy**2)
+
+    def set_velocity(self, vx, vy):
+        """速度ベクトルを設定する
+
+        Args:
+            vx (float): X方向の速度
+            vy (float): Y方向の速度
+        """
+        self.vx = vx
+        self.vy = vy
