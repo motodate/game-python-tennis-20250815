@@ -51,3 +51,21 @@ class Paddle:
         rect = pygame.Rect(self.x, self.y, self.width, self.height)
         pygame.draw.rect(screen, GameSettings.WHITE, rect)
         return rect
+    
+    def move_up(self, speed, delta_time):
+        """パドルを上に移動する
+        
+        Args:
+            speed (float): 移動速度 (pixel/second)
+            delta_time (float): 経過時間 (seconds)
+        """
+        self.y -= speed * delta_time
+    
+    def move_down(self, speed, delta_time):
+        """パドルを下に移動する
+        
+        Args:
+            speed (float): 移動速度 (pixel/second)
+            delta_time (float): 経過時間 (seconds)
+        """
+        self.y += speed * delta_time
