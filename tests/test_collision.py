@@ -121,3 +121,30 @@ class TestCollisionHandler:
         
         assert ball.vx < 0     # X方向は反転
         assert ball.vy != 0    # Y方向に角度が付いている
+
+    def test_check_scoring_left_wall(self):
+        """左壁通過時にCPU得点をテスト"""
+        handler = CollisionHandler()
+        ball = Ball(-10, 300)  # 左壁を超えた位置
+        
+        result = handler.check_scoring(ball)
+        
+        assert result == 'cpu'
+
+    def test_check_scoring_right_wall(self):
+        """右壁通過時にプレイヤー得点をテスト"""
+        handler = CollisionHandler()
+        ball = Ball(GameSettings.WINDOW_WIDTH + 10, 300)  # 右壁を超えた位置
+        
+        result = handler.check_scoring(ball)
+        
+        assert result == 'player'
+
+    def test_check_scoring_none(self):
+        """壁を通過していない場合Noneを返すテスト"""
+        handler = CollisionHandler()
+        ball = Ball(400, 300)  # 画面内の位置
+        
+        result = handler.check_scoring(ball)
+        
+        assert result is None

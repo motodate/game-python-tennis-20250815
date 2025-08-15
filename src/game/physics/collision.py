@@ -98,3 +98,22 @@ class CollisionHandler:
         
         # 新しい速度ベクトルを設定
         ball.set_velocity(new_vx, new_vy)
+
+    def check_scoring(self, ball):
+        """得点判定を行う
+
+        Args:
+            ball: Ballオブジェクト
+
+        Returns:
+            str|None: 'cpu' (プレイヤー失点), 'player' (CPU失点), None (得点なし)
+        """
+        # 左壁通過時はCPU得点
+        if ball.x < 0:
+            return 'cpu'
+        
+        # 右壁通過時はプレイヤー得点
+        if ball.x > GameSettings.WINDOW_WIDTH:
+            return 'player'
+        
+        return None
