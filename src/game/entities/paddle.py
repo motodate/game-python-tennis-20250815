@@ -76,3 +76,19 @@ class Paddle:
         max_y = GameSettings.WINDOW_HEIGHT - self.height
         if self.y > max_y:
             self.y = max_y
+    
+    def get_rect(self):
+        """衝突判定用のpygame.Rectを取得する
+        
+        Returns:
+            pygame.Rect: パドルの矩形
+        """
+        return pygame.Rect(self.x, self.y, self.width, self.height)
+    
+    def get_center_y(self):
+        """パドルの中央Y座標を取得する
+        
+        Returns:
+            float: パドルの中央Y座標
+        """
+        return self.y + self.height // 2
