@@ -69,3 +69,29 @@ class TestCollisionHandler:
         paddle = Paddle.create_left_paddle()  # 左パドル
         
         assert handler.check_paddle_collision(ball, paddle) is False
+
+    def test_calculate_bounce_angle_center(self):
+        """パドル中心での反射（水平）をテスト"""
+        handler = CollisionHandler()
+        paddle = Paddle.create_left_paddle()
+        # パドル中心と同じY座標に配置
+        ball = Ball(paddle.x + paddle.width, paddle.get_center_y())
+        ball.set_velocity(200, 0)  # 右向きの速度
+        
+        new_vx, new_vy = handler.calculate_bounce_angle(ball, paddle)
+        
+        assert new_vx == -200  # X方向は反転
+        assert abs(new_vy) < 30  # Y方向はほぼ変化なし（中心付近なので）
+
+    def test_calculate_bounce_angle_edge(self):
+        """パドル端での反射（角度付き）をテスト"""
+        handler = CollisionHandler()
+        paddle = Paddle.create_left_paddle()
+        # パドル上端に配置
+        ball = Ball(paddle.x + paddle.width, paddle.y)
+        ball.set_velocity(200, 0)  # 右向きの速度
+        
+        new_vx, new_vy = handler.calculate_bounce_angle(ball, paddle)
+        
+        assert new_vx == -200  # X方向は反転
+        assert new_vy < 0      # Y方向は上向き（負の値）

@@ -57,3 +57,28 @@ class CollisionHandler:
         paddle_rect = paddle.get_rect()
         
         return ball_rect.colliderect(paddle_rect)
+
+    def calculate_bounce_angle(self, ball, paddle):
+        """パドル衝突時の反射角度を計算する
+
+        Args:
+            ball: Ballオブジェクト
+            paddle: Paddleオブジェクト
+
+        Returns:
+            tuple: 新しい速度ベクトル (new_vx, new_vy)
+        """
+        # 衝突位置の相対位置を計算（-1.0〜1.0）
+        ball_center_y = ball.y + ball.size / 2
+        paddle_center_y = paddle.get_center_y()
+        relative_position = (ball_center_y - paddle_center_y) / (paddle.height / 2)
+        
+        # 相対位置に応じたY速度の計算
+        speed = abs(ball.vx)  # 元の速度の大きさ
+        max_angle_factor = 0.75  # 最大角度係数
+        new_vy = relative_position * speed * max_angle_factor
+        
+        # X速度の反転
+        new_vx = -ball.vx
+        
+        return new_vx, new_vy
