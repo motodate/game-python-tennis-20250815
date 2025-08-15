@@ -7,3 +7,6 @@ class GameWindow:
         pygame.init()
         self.screen = pygame.display.set_mode((GameSettings.WINDOW_WIDTH, GameSettings.WINDOW_HEIGHT))
         pygame.display.set_caption(GameSettings.WINDOW_TITLE)
+
+    def clear_screen(self):
+        self.screen.fill(GameSettings.BLACK)
