@@ -165,3 +165,43 @@ class TestBall:
         
         # 方向が変わらないことを確認
         assert abs(initial_angle - new_angle) < 0.001
+
+    def test_max_speed_limit(self):
+        """最大速度（700）を超えないことのテスト"""
+        ball = Ball(0, 0)
+        # 最大速度近くに設定
+        ball.set_velocity(600, 400)  # 速度約720
+        
+        ball.accelerate()
+        
+        # 最大速度を超えないことを確認
+        assert ball.get_speed() <= GameSettings.BALL_MAX_SPEED
+
+    def test_max_speed_clamp(self):
+        """最大速度時の速度制限テスト"""
+        ball = Ball(0, 0)
+        # 意図的に高速に設定
+        ball.set_velocity(800, 600)  # 速度1000
+        
+        ball.accelerate()
+        
+        # 速度が700に制限されることを確認
+        assert abs(ball.get_speed() - GameSettings.BALL_MAX_SPEED) < 0.001
+
+    def test_max_speed_maintains_direction_when_clamped(self):
+        """最大速度制限時も方向が維持されることのテスト"""
+        ball = Ball(0, 0)
+        ball.set_velocity(600, 800)  # 速度1000
+        
+        # 加速前の方向を計算
+        initial_angle = math.atan2(ball.vy, ball.vx)
+        
+        ball.accelerate()
+        
+        # 加速後の方向を計算
+        new_angle = math.atan2(ball.vy, ball.vx)
+        
+        # 方向が変わらないことを確認
+        assert abs(initial_angle - new_angle) < 0.001
+        # 速度が制限されていることを確認
+        assert abs(ball.get_speed() - GameSettings.BALL_MAX_SPEED) < 0.001
