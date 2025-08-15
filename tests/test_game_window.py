@@ -32,3 +32,25 @@ class TestGameWindow:
         self.game_window = GameWindow()
         
         mock_set_mode.assert_called_once_with((800, 600))
+
+    @patch('pygame.init')
+    @patch('pygame.display.set_mode')
+    def test_background_color_is_black(self, mock_set_mode, mock_init):
+        mock_screen = MagicMock()
+        mock_set_mode.return_value = mock_screen
+        
+        self.game_window = GameWindow()
+        self.game_window.clear_screen()
+        
+        mock_screen.fill.assert_called_once_with((0, 0, 0))
+
+    @patch('pygame.init')
+    @patch('pygame.display.set_mode')
+    def test_clear_screen_method_exists(self, mock_set_mode, mock_init):
+        mock_screen = MagicMock()
+        mock_set_mode.return_value = mock_screen
+        
+        self.game_window = GameWindow()
+        
+        assert hasattr(self.game_window, 'clear_screen')
+        assert callable(getattr(self.game_window, 'clear_screen'))
