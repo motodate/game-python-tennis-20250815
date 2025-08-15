@@ -66,6 +66,7 @@ class TennisGame:
             if self.input_handler.is_action_pressed():
                 self.game_state.start_game()
                 self.game_timer.start()
+                self.ball.reset()  # ゲーム開始時にボールをリセットして動きを開始
         elif self.game_state.is_playing():
             self.update_playing(delta_time)
     
