@@ -172,3 +172,38 @@ class TestGameState:
         
         game_state.reset()
         assert game_state.final_score is None
+
+    def test_get_message_method(self):
+        """get_message()メソッドのテスト"""
+        game_state = GameState()
+        
+        # WAITING時のメッセージ
+        message = game_state.get_message()
+        assert message is not None
+
+    def test_get_message_waiting_state(self):
+        """WAITING時のメッセージテスト"""
+        game_state = GameState()
+        assert game_state.is_waiting() is True
+        
+        message = game_state.get_message()
+        assert message == "Press Enter to Start"
+
+    def test_get_message_game_over_state(self):
+        """GAME_OVER時のメッセージテスト"""
+        game_state = GameState()
+        game_state.start_game()
+        game_state.end_game({"player": 5, "cpu": 3})
+        assert game_state.is_game_over() is True
+        
+        message = game_state.get_message()
+        assert message == "Game Over"
+
+    def test_get_message_playing_state(self):
+        """PLAYING時のメッセージテスト（Noneを返す）"""
+        game_state = GameState()
+        game_state.start_game()
+        assert game_state.is_playing() is True
+        
+        message = game_state.get_message()
+        assert message is None

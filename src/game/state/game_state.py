@@ -81,3 +81,16 @@ class GameState:
         """
         self.current_state = State.WAITING
         self.final_score = None
+
+    def get_message(self):
+        """現在の状態に応じたメッセージを取得する
+
+        Returns:
+            str|None: 状態に応じたメッセージ、PLAYINGの場合はNone
+        """
+        if self.current_state == State.WAITING:
+            return "Press Enter to Start"
+        elif self.current_state == State.GAME_OVER:
+            return "Game Over"
+        else:  # PLAYING
+            return None
