@@ -31,3 +31,12 @@ class Ball:
         speed = GameSettings.BALL_INITIAL_SPEED
         self.vx = speed * math.cos(angle)
         self.vy = speed * math.sin(angle)
+
+    def update(self, delta_time):
+        """ボールの位置を更新する
+
+        Args:
+            delta_time (float): 経過時間 (seconds)
+        """
+        self.x += self.vx * delta_time
+        self.y += self.vy * delta_time
