@@ -38,3 +38,16 @@ class Paddle:
         x = GameSettings.PADDLE_RIGHT_X
         y = (GameSettings.WINDOW_HEIGHT - GameSettings.PADDLE_HEIGHT) // 2
         return cls(x, y)
+    
+    def draw(self, screen):
+        """パドルを画面に描画する
+        
+        Args:
+            screen: pygame.Surfaceオブジェクト
+            
+        Returns:
+            pygame.Rect: 描画されたパドルの矩形
+        """
+        rect = pygame.Rect(self.x, self.y, self.width, self.height)
+        pygame.draw.rect(screen, GameSettings.WHITE, rect)
+        return rect
