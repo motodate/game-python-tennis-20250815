@@ -44,4 +44,6 @@ def test_src_ui_init_py_exists():
 
 def test_src_utils_init_py_exists():
     """src/utils/__init__.pyが存在することを確認"""
-    assert os.path.exists("src/utils/__init__.py"), "src/utils/__init__.pyが存在しません"
+    assert os.path.exists(
+        "src/utils/__init__.py"
+    ), "src/utils/__init__.pyが存在しません"
