@@ -12,92 +12,92 @@
 ## ToDo（TDD実装順）
 
 ### 1. InputHandlerクラスのテストを作成
-- [ ] tests/test_input_handler.pyを作成
-- [ ] InputHandlerクラスの存在テストを記述
-- [ ] テストを実行して失敗することを確認
+- [x] tests/test_input_handler.pyを作成
+- [x] InputHandlerクラスの存在テストを記述
+- [x] テストを実行して失敗することを確認
 
 ### 2. InputHandlerクラスの基本実装
-- [ ] src/game/input/__init__.pyを作成
-- [ ] src/game/input/input_handler.pyを作成
-- [ ] InputHandlerクラスを定義
-- [ ] テストを実行して成功することを確認
+- [x] src/game/input/__init__.pyを作成
+- [x] src/game/input/input_handler.pyを作成
+- [x] InputHandlerクラスを定義
+- [x] テストを実行して成功することを確認
 
 ### 3. キー状態管理のテストを作成
-- [ ] update()メソッドのテストを追加
-- [ ] is_key_pressed()メソッドのテストを追加
-- [ ] is_key_held()メソッドのテストを追加
-- [ ] テストを実行して失敗することを確認
+- [x] update()メソッドのテストを追加
+- [x] is_key_pressed()メソッドのテストを追加
+- [x] is_key_held()メソッドのテストを追加
+- [x] テストを実行して失敗することを確認
 
 ### 4. キー状態管理を実装
-- [ ] update()メソッドを実装（pygame.key.get_pressed()を使用）
-- [ ] is_key_pressed()メソッドを実装（単発押下判定）
-- [ ] is_key_held()メソッドを実装（押し続け判定）
-- [ ] key_states辞書で状態を管理
-- [ ] テストを実行して成功することを確認
+- [x] update()メソッドを実装（pygame.key.get_pressed()を使用）
+- [x] is_key_pressed()メソッドを実装（単発押下判定）
+- [x] is_key_held()メソッドを実装（押し続け判定）
+- [x] key_states辞書で状態を管理
+- [x] テストを実行して成功することを確認
 
 ### 5. 移動入力のテストを作成
-- [ ] is_move_up()メソッドのテストを追加
-- [ ] is_move_down()メソッドのテストを追加
-- [ ] WキーとUPキーの両方をテスト
-- [ ] SキーとDOWNキーの両方をテスト
-- [ ] テストを実行して失敗することを確認
+- [x] is_move_up()メソッドのテストを追加
+- [x] is_move_down()メソッドのテストを追加
+- [x] WキーとUPキーの両方をテスト
+- [x] SキーとDOWNキーの両方をテスト
+- [x] テストを実行して失敗することを確認
 
 ### 6. 移動入力を実装
-- [ ] is_move_up()メソッドを実装（K_w or K_UP）
-- [ ] is_move_down()メソッドを実装（K_s or K_DOWN）
-- [ ] pygame.K_w, K_s, K_UP, K_DOWNの定数を使用
-- [ ] テストを実行して成功することを確認
+- [x] is_move_up()メソッドを実装（K_w or K_UP）
+- [x] is_move_down()メソッドを実装（K_s or K_DOWN）
+- [x] pygame.K_w, K_s, K_UP, K_DOWNの定数を使用
+- [x] テストを実行して成功することを確認
 
 ### 7. アクション入力のテストを作成
-- [ ] is_action_pressed()メソッドのテストを追加
-- [ ] Enterキー押下のテストを追加
-- [ ] 単発押下のみ反応することのテストを追加
-- [ ] テストを実行して失敗することを確認
+- [x] is_action_pressed()メソッドのテストを追加
+- [x] Enterキー押下のテストを追加
+- [x] 単発押下のみ反応することのテストを追加
+- [x] テストを実行して失敗することを確認
 
 ### 8. アクション入力を実装
-- [ ] is_action_pressed()メソッドを実装（K_RETURN）
-- [ ] previous_keysで前フレームの状態を保存
-- [ ] 押下開始時のみTrueを返す処理を実装
-- [ ] テストを実行して成功することを確認
+- [x] is_action_pressed()メソッドを実装（K_RETURN）
+- [x] previous_keysで前フレームの状態を保存
+- [x] 押下開始時のみTrueを返す処理を実装
+- [x] テストを実行して成功することを確認
 
 ### 9. システム入力のテストを作成
-- [ ] is_quit_pressed()メソッドのテストを追加
-- [ ] ESCキー押下のテストを追加
-- [ ] テストを実行して失敗することを確認
+- [x] is_quit_pressed()メソッドのテストを追加
+- [x] ESCキー押下のテストを追加
+- [x] テストを実行して失敗することを確認
 
 ### 10. システム入力を実装
-- [ ] is_quit_pressed()メソッドを実装（K_ESCAPE）
-- [ ] 単発押下判定を使用
-- [ ] テストを実行して成功することを確認
+- [x] is_quit_pressed()メソッドを実装（K_ESCAPE）
+- [x] 単発押下判定を使用
+- [x] テストを実行して成功することを確認
 
 ### 11. 移動速度計算のテストを作成
-- [ ] get_player_movement()メソッドのテストを追加
-- [ ] 上移動時に-1を返すテストを追加
-- [ ] 下移動時に1を返すテストを追加
-- [ ] 無入力時に0を返すテストを追加
-- [ ] テストを実行して失敗することを確認
+- [x] get_player_movement()メソッドのテストを追加
+- [x] 上移動時に-1を返すテストを追加
+- [x] 下移動時に1を返すテストを追加
+- [x] 無入力時に0を返すテストを追加
+- [x] テストを実行して失敗することを確認
 
 ### 12. 移動速度計算を実装
-- [ ] get_player_movement()メソッドを実装
-- [ ] is_move_up()で-1を返す
-- [ ] is_move_down()で1を返す
-- [ ] 両方または無入力で0を返す
-- [ ] テストを実行して成功することを確認
+- [x] get_player_movement()メソッドを実装
+- [x] is_move_up()で-1を返す
+- [x] is_move_down()で1を返す
+- [x] 両方または無入力で0を返す
+- [x] テストを実行して成功することを確認
 
 ### 13. イベント処理のテストを作成
-- [ ] handle_events()メソッドのテストを追加
-- [ ] pygame.QUITイベントのテストを追加
-- [ ] キーイベントの処理テストを追加
-- [ ] テストを実行して失敗することを確認
+- [x] handle_events()メソッドのテストを追加
+- [x] pygame.QUITイベントのテストを追加
+- [x] キーイベントの処理テストを追加
+- [x] テストを実行して失敗することを確認
 
 ### 14. イベント処理を実装
-- [ ] handle_events(events)メソッドを実装
-- [ ] pygame.QUITイベントの処理を追加
-- [ ] KEYDOWNとKEYUPイベントの処理を追加
-- [ ] 全テストを実行して成功することを確認
+- [x] handle_events(events)メソッドを実装
+- [x] pygame.QUITイベントの処理を追加
+- [x] KEYDOWNとKEYUPイベントの処理を追加
+- [x] 全テストを実行して成功することを確認
 
 ## 完了条件
-- [ ] W/S/↑/↓キーでパドルが操作できる
-- [ ] Enterキーでゲームが開始/リスタートする
-- [ ] ESCキーでゲームが終了する
-- [ ] pytest tests/test_input_handler.pyが全てパスする
+- [x] W/S/↑/↓キーでパドルが操作できる
+- [x] Enterキーでゲームが開始/リスタートする
+- [x] ESCキーでゲームが終了する
+- [x] pytest tests/test_input_handler.pyが全てパスする
