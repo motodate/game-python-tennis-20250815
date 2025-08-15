@@ -53,3 +53,19 @@ class TestCollisionHandler:
         
         assert ball.vx == -180  # X方向は維持
         assert ball.vy == -120  # Y方向は反転
+
+    def test_check_paddle_collision_overlapping(self):
+        """パドルとの矩形重なり判定をテスト（衝突あり）"""
+        handler = CollisionHandler()
+        ball = Ball(50, 250)  # パドルと重なる位置
+        paddle = Paddle.create_left_paddle()  # 左パドル
+        
+        assert handler.check_paddle_collision(ball, paddle) is True
+
+    def test_check_paddle_collision_not_overlapping(self):
+        """パドルとの矩形重なり判定をテスト（衝突なし）"""
+        handler = CollisionHandler()
+        ball = Ball(400, 300)  # パドルから離れた位置
+        paddle = Paddle.create_left_paddle()  # 左パドル
+        
+        assert handler.check_paddle_collision(ball, paddle) is False

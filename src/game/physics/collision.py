@@ -42,3 +42,18 @@ class CollisionHandler:
             ball.y = 0
         elif ball.y + ball.size >= GameSettings.WINDOW_HEIGHT:
             ball.y = GameSettings.WINDOW_HEIGHT - ball.size
+
+    def check_paddle_collision(self, ball, paddle):
+        """パドルとの衝突判定を行う
+
+        Args:
+            ball: Ballオブジェクト
+            paddle: Paddleオブジェクト
+
+        Returns:
+            bool: 衝突している場合True、していない場合False
+        """
+        ball_rect = ball.get_rect()
+        paddle_rect = paddle.get_rect()
+        
+        return ball_rect.colliderect(paddle_rect)
