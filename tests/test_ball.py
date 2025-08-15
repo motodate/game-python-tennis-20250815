@@ -126,3 +126,42 @@ class TestBall:
             ball.set_velocity(vx, vy)
             actual_speed = ball.get_speed()
             assert abs(actual_speed - expected_speed) < 0.001
+
+    def test_accelerate_method(self):
+        """accelerate()メソッドのテスト"""
+        ball = Ball(0, 0)
+        ball.set_velocity(200, 300)
+        
+        initial_speed = ball.get_speed()
+        ball.accelerate()
+        new_speed = ball.get_speed()
+        
+        # 5%速度増加の確認
+        expected_speed = initial_speed * GameSettings.BALL_ACCELERATION_RATE
+        assert abs(new_speed - expected_speed) < 0.001
+
+    def test_accelerate_five_percent_increase(self):
+        """5%速度増加のテスト"""
+        ball = Ball(0, 0)
+        ball.set_velocity(100, 0)  # 速度100
+        
+        ball.accelerate()
+        
+        # 速度が105になることを確認
+        assert abs(ball.get_speed() - 105) < 0.001
+
+    def test_accelerate_maintains_direction(self):
+        """速度方向が維持されることのテスト"""
+        ball = Ball(0, 0)
+        ball.set_velocity(300, 400)
+        
+        # 加速前の方向を計算
+        initial_angle = math.atan2(ball.vy, ball.vx)
+        
+        ball.accelerate()
+        
+        # 加速後の方向を計算
+        new_angle = math.atan2(ball.vy, ball.vx)
+        
+        # 方向が変わらないことを確認
+        assert abs(initial_angle - new_angle) < 0.001
