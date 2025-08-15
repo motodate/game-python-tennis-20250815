@@ -73,3 +73,11 @@ class GameState:
         """
         self.current_state = State.GAME_OVER
         self.final_score = final_score
+
+    def reset(self):
+        """ゲーム状態をリセットする
+
+        状態をWAITINGに変更し、スコアやタイマーをリセットする
+        """
+        self.current_state = State.WAITING
+        self.final_score = None

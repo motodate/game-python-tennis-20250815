@@ -139,3 +139,36 @@ class TestGameState:
         # final_score属性に保存されることを確認
         assert hasattr(game_state, 'final_score')
         assert game_state.final_score == final_score
+
+    def test_reset_method(self):
+        """reset()メソッドのテスト"""
+        game_state = GameState()
+        game_state.start_game()
+        final_score = {"player": 5, "cpu": 3}
+        game_state.end_game(final_score)
+        assert game_state.is_game_over() is True
+        
+        game_state.reset()
+        assert game_state.is_waiting() is True
+
+    def test_reset_game_over_to_waiting(self):
+        """GAME_OVERからWAITINGへの遷移テスト"""
+        game_state = GameState()
+        game_state.start_game()
+        game_state.end_game({"player": 10, "cpu": 5})
+        assert game_state.is_game_over() is True
+        
+        game_state.reset()
+        assert game_state.is_waiting() is True
+        assert game_state.is_game_over() is False
+
+    def test_reset_clears_score(self):
+        """スコアがクリアされることのテスト"""
+        game_state = GameState()
+        game_state.start_game()
+        final_score = {"player": 8, "cpu": 4}
+        game_state.end_game(final_score)
+        assert game_state.final_score == final_score
+        
+        game_state.reset()
+        assert game_state.final_score is None
