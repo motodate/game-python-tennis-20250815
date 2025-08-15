@@ -12,15 +12,15 @@
 ## ToDo（TDD実装順）
 
 ### 1. CollisionHandlerクラスのテストを作成
-- [ ] tests/test_collision.pyを作成
-- [ ] CollisionHandlerクラスの存在テストを記述
-- [ ] テストを実行して失敗することを確認
+- [x] tests/test_collision.pyを作成
+- [x] CollisionHandlerクラスの存在テストを記述
+- [x] テストを実行して失敗することを確認
 
 ### 2. CollisionHandlerクラスの基本実装
-- [ ] src/game/physics/__init__.pyを作成
-- [ ] src/game/physics/collision.pyを作成
-- [ ] CollisionHandlerクラスを定義
-- [ ] テストを実行して成功することを確認
+- [x] src/game/physics/__init__.pyを作成
+- [x] src/game/physics/collision.pyを作成
+- [x] CollisionHandlerクラスを定義
+- [x] テストを実行して成功することを確認
 
 ### 3. 壁との衝突判定テストを作成
 - [ ] check_wall_collision()メソッドのテストを追加
