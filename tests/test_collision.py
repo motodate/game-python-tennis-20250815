@@ -95,3 +95,29 @@ class TestCollisionHandler:
         
         assert new_vx == -200  # X方向は反転
         assert new_vy < 0      # Y方向は上向き（負の値）
+
+    def test_handle_paddle_bounce_acceleration(self):
+        """パドル反射でボールが加速されることをテスト"""
+        handler = CollisionHandler()
+        paddle = Paddle.create_left_paddle()
+        ball = Ball(paddle.x + paddle.width, paddle.get_center_y())
+        initial_speed = 200
+        ball.set_velocity(initial_speed, 0)
+        
+        handler.handle_paddle_bounce(ball, paddle)
+        
+        final_speed = abs(ball.vx)
+        assert final_speed > initial_speed  # 加速されている
+
+    def test_handle_paddle_bounce_angle_applied(self):
+        """パドル反射で反射角度が適用されることをテスト"""
+        handler = CollisionHandler()
+        paddle = Paddle.create_left_paddle()
+        # パドル上端に配置
+        ball = Ball(paddle.x + paddle.width, paddle.y)
+        ball.set_velocity(200, 0)
+        
+        handler.handle_paddle_bounce(ball, paddle)
+        
+        assert ball.vx < 0     # X方向は反転
+        assert ball.vy != 0    # Y方向に角度が付いている

@@ -82,3 +82,19 @@ class CollisionHandler:
         new_vx = -ball.vx
         
         return new_vx, new_vy
+
+    def handle_paddle_bounce(self, ball, paddle):
+        """パドル反射処理を行う
+
+        Args:
+            ball: Ballオブジェクト
+            paddle: Paddleオブジェクト
+        """
+        # ボールを加速（5%）
+        ball.accelerate()
+        
+        # 反射角度を計算
+        new_vx, new_vy = self.calculate_bounce_angle(ball, paddle)
+        
+        # 新しい速度ベクトルを設定
+        ball.set_velocity(new_vx, new_vy)
