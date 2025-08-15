@@ -60,6 +60,9 @@ class Paddle:
             delta_time (float): 経過時間 (seconds)
         """
         self.y -= speed * delta_time
+        # 上端チェック
+        if self.y < 0:
+            self.y = 0
     
     def move_down(self, speed, delta_time):
         """パドルを下に移動する
@@ -69,3 +72,7 @@ class Paddle:
             delta_time (float): 経過時間 (seconds)
         """
         self.y += speed * delta_time
+        # 下端チェック
+        max_y = GameSettings.WINDOW_HEIGHT - self.height
+        if self.y > max_y:
+            self.y = max_y
