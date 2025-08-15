@@ -14,6 +14,7 @@ class GameState:
     def __init__(self):
         """GameStateを初期化"""
         self.current_state = State.WAITING
+        self.final_score = None
 
     def set_state(self, new_state):
         """状態を設定する
@@ -61,3 +62,14 @@ class GameState:
         状態をPLAYINGに変更し、ゲーム開始時の初期化を行う
         """
         self.current_state = State.PLAYING
+
+    def end_game(self, final_score):
+        """ゲームを終了する
+
+        Args:
+            final_score (dict): 最終スコア
+
+        状態をGAME_OVERに変更し、最終スコアを保存する
+        """
+        self.current_state = State.GAME_OVER
+        self.final_score = final_score

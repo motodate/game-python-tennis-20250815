@@ -106,3 +106,36 @@ class TestGameState:
         # ここではstart_game()がGAME_OVERから直接PLAYINGに遷移すると仮定
         game_state.start_game()
         assert game_state.is_playing() is True
+
+    def test_end_game_method(self):
+        """end_game()メソッドのテスト"""
+        game_state = GameState()
+        game_state.start_game()  # PLAYINGにする
+        assert game_state.is_playing() is True
+        
+        final_score = {"player": 5, "cpu": 3}
+        game_state.end_game(final_score)
+        assert game_state.is_game_over() is True
+
+    def test_end_game_playing_to_game_over(self):
+        """PLAYINGからGAME_OVERへの遷移テスト"""
+        game_state = GameState()
+        game_state.start_game()
+        assert game_state.is_playing() is True
+        
+        final_score = {"player": 7, "cpu": 2}
+        game_state.end_game(final_score)
+        assert game_state.is_game_over() is True
+        assert game_state.is_playing() is False
+
+    def test_end_game_saves_final_score(self):
+        """最終スコアの保存テスト"""
+        game_state = GameState()
+        game_state.start_game()
+        
+        final_score = {"player": 10, "cpu": 8}
+        game_state.end_game(final_score)
+        
+        # final_score属性に保存されることを確認
+        assert hasattr(game_state, 'final_score')
+        assert game_state.final_score == final_score
